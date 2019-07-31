@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add New Link Page</title>
+</head>
+<body>
+    <form th:object="${link}" th:action= "@{/newLink}" method="post" class="needs-validation">
+        <div class="form-group">
+            <label for="linkId">Link Id</label>
+            <input th:field="*{LinkId}" type="number" class="form-control" placeholder="" required/>
+        </div>
+        <div class="form-group">
+                <label for="topicId">Topic Id</label>
+                <select th:field="*{TopicId}" class="form-control" required>
+                    <option value="0">Choose Topic</option>
+                    <option th:each="topic : ${topics}"
+                    th:value="${topic.TopicId}"
+                    th:utext="${topic.TopicName}"></option>
+                </select>
+        </div>
+        <div class="form-group">
+            <label for="recordDate">Record Date</label>
+            <input th:field="*{RecordDate}" type="date" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="linkName">Link Name</label>
+            <input th:field="*{LinkName}" type="text" class="form-control" placeholder="" required/>
+        </div>
+        <div class="form-group">
+            <label for="linkDescription">Link Description</label>
+            <input th:field="*{LinkDescription}" type="text" class="form-control" placeholder=""/>
+        </div>
+        <div class="form-group">
+            <label for="linkURL">Link URL</label>
+            <input th:field="*{LinkURL}" type="text" class="form-control" placeholder="" required/>
+        </div>
+        <div class="form-group">
+            <!-- <label for="notes">Notes</label> -->
+            <textarea th:field="*{Notes}" class="form-control" placeholder="Notes"></textarea>
+            <!-- <input th:field="*{Notes}" type="text" class="form-control" placeholder=""/> -->
+        </div> 
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>

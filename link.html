@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Link</title>
+</head>
+<body>
+    <div>
+        <nav>
+            <a href="/">index</a>
+            <a href="/link">links</a>
+            <a href="/topic">topics</a>
+        </nav>
+        <h3>Link Info</h3>
+        <!-- Add table if the list contains links -->
+        <table th:if="${not #lists.isEmpty(link)}">
+            <!-- Table header row -->
+            <tr>
+                <th>LinkId</th>
+                <th>TopicId</th>
+                <th>RecordDate</th>
+                <th>LinkName</th>
+                <th>LinkDescription</th>
+                <th>LinkURL</th>
+                <th>Notes</th>
+            </tr>
+            <!-- Insert a row for each link in the list -->
+            <tr th:each="link : ${link}">
+                <td th:text="${link.LinkId}">LID</td>
+                <td th:text="${link.TopicId}">TID</td>
+                <td th:text="${link.RecordDate}">DATE</td>
+                <td th:text="${link.LinkName}">NAME</td>
+                <td th:text="${link.LinkDescription}">DECR</td>
+                <td th:text="${link.LinkURL}">URL</td>
+                <td th:text="${link.Notes}">NOTES</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
